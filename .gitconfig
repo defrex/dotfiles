@@ -1,1 +1,24 @@
-/home/defrex/.gitconfig
+[user]
+	name = Aron Jones
+	email = defrex0@gmail.com
+
+[alias]
+    st = status -s
+    cam = commit -a -m 
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+[github]
+	user = defrex
+[color]
+    ui = true
+[push]
+    default = upstream
+[core]
+    autocrlf = input
+    safecrlf = true

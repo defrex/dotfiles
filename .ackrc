@@ -1,1 +1,4 @@
-/home/defrex/.ackrc
+--nobreak
+--smart-case
+--type-set=sass=.sass
+--type-set=coffee=.coffee
