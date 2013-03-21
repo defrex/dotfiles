@@ -1,4 +1,12 @@
 --nobreak
 --smart-case
 --type-set=sass=.sass
+--ignore-dir=migrations
+--ignore-dir=.git
+--ignore-dir=CACHE
+--ignore-dir=.sass-cache
+--ignore-dir=media
 --type-set=coffee=.coffee
+--type-set=html=.html
+--type-set=sass=.sass
+--type-set=css=.css,.sass,.scss

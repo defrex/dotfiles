@@ -1,13 +1,16 @@
 
-f [ -f $HOME/.Xmodmap ]; then
-    /usr/bin/xmodmap $HOME/.Xmodmap
-fi
-
-xmodmap ~/.xmodmap
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 96
+Xft.rgba: rgb
 
 *font: xft:Ubuntu Mono:pixelsize=18
 *scrollBar: False
 *transparent: false
+*saveLines: 10000
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
@@ -36,8 +39,8 @@ xmodmap ~/.xmodmap
 #define S_base00        #657b83
 #define S_base0         #839496
 #define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
+#define S_base2         #e0dbc9
+#define S_base3         #f0e9d7
 #define S_yellow        #b58900
 #define S_orange        #cb4b16
 #define S_red           #dc322f

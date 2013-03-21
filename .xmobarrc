@@ -1,8 +1,9 @@
 Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , borderColor = "black"
+       , border = TopB
        , bgColor = "black"
        , fgColor = "grey"
-       , position = Top
-       , lowerOnStart = True
+       , position = TopW C 99
        , commands = [ Run Date "%a %b %_d %Y %l:%M:%S" "date" 10
                     , Run StdinReader
                     ]
