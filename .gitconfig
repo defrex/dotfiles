@@ -1,10 +1,8 @@
 [user]
 	name = Aron Jones
-	email = defrex0@gmail.com
+	email = aron.jones@gmail.com
 
 [alias]
-    st = status -s
-    cam = commit -a -m 
 	switch = !legit switch \"$@\"
 	branches = !legit branches
 	sprout = !legit sprout \"$@\"
@@ -13,12 +11,12 @@
 	sync = !legit sync \"$@\"
 	publish = !legit publish \"$@\"
 	graft = !legit graft \"$@\"
-[github]
-	user = defrex
 [color]
-    ui = true
+	ui = true
 [push]
-    default = upstream
+	default = upstream
 [core]
-    autocrlf = input
-    safecrlf = true
+	autocrlf = input
+	safecrlf = true
+[credential]
+	helper = cache
