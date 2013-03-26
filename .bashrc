@@ -25,6 +25,16 @@ shopt -s checkwinsize
 
 # Prompt!
 
+BLACK="\e[0;30m"
+RED="\e[0;31m"
+GREEN="\e[0;32m"
+YELLOW="\e[0;33m"
+BLUE="\e[0;34m"
+PURPLE="\e[0;35m"
+CYAN="\e[0;36m"
+GRAY="\e[0;37m"
+OFF="\e[m"
+
 function git_changes {
     changes="`git status --porcelain 2> /dev/null | wc -l`"
     [ $changes -ne 0 ] && echo "!$changes"
@@ -40,35 +50,34 @@ function virtualenv {
     [ ! -z "$e" ] && echo "env:$e "
 }
 
-function root {
-    if [ "`whoami`" == "root" ]; then
-        echo "╔══root"
-    fi
-}
-function root_bottom {
-    if [ "`whoami`" == "root" ]; then
-        echo "╚╡"
-    fi
-}
-function user {
-    if [ "`whoami`" != "root" ]; then
-        echo "╔══`whoami`"
-    fi
-}
-function user_bottom {
-    if [ "`whoami`" != "root" ]; then
-        echo "╚╡"
-    fi
+function user_color {
+    if [ "`whoami`" == "root" ]; then echo $RED; else echo $CYAN; fi
 }
 
-RED="\e[0;31m"
-GREEN="\e[0;32m"
-BLUE="\e[0;34m"
-YELLOW="\e[0;33m"
-OFF="\e[m"
+function prompt() {
+    # A full width line of ═s
+    line="`printf -vch "%${COLUMNS}s" ""; printf "%s" "${ch// /═}"`"
 
-PS1="${RED}\$(root)${OFF}\$(user) ${BLUE}\$(virtualenv)${OFF}\w${YELLOW}\$(git_branch)\$(git_changes)${OFF}
-${RED}\$(root_bottom)${OFF}$(user_bottom)"
+    prompt_left="$(user_color)╔══${OFF} `whoami` ${BLUE}$(virtualenv)${OFF}`pwd`${YELLOW}$(git_branch)$(git_changes)${OFF} "
+    prompt_right="${GRAY}`date +"%I:%M:%S"`${OFF}"
+    # used to subtract from length in expander
+    prompt_colour="$(user_color)${OFF}${BLUE}${OFF}${YELLOW}${OFF}${GRAY}${OFF}"
+    prompt_expender="$(user_color)${line:$((${#prompt_left}-${#prompt_colour}+${#prompt_right}+2))}╡${OFF}"
+    prompt_line2="$(user_color)╚╡${OFF}"
+
+    PS1=$(printf "%s%s%s\n%s" \
+        "$prompt_left" \
+        "$prompt_expender" \
+        "$prompt_right" \
+        "$prompt_line2")
+}
+
+PROMPT_COMMAND=prompt
+
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -84,6 +93,7 @@ alias pcat='pygmentize'
 alias gst='git status'
 alias gca='git commit -av'
 alias gpr='git pull --rebase'
+alias s='workon shopcaster'
 
 # arrows search
 bind '"\e[A": history-search-backward'
