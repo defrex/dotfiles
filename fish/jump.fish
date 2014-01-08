@@ -1,0 +1,1 @@
+/home/defrex/code/jump/bin/jump.fish
