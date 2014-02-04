@@ -10,6 +10,13 @@ CYAN="\[\e[0;36m\]"
 GRAY="\[\e[0;37m\]"
 OFF="\[\e[m\]"
 
+BORDER_COLOR="$BLUE"
+USERNAME_COLOR="$BLUE"
+PATH_COLOR="$BLUE"
+ENV_COLOR="$CYAN"
+GIT_COLOR="$YELLOW"
+TIME_COLOR="$GRAY"
+
 function git_changes {
     changes="`git status --porcelain 2> /dev/null | wc -l`"
     [ $changes -ne 0 ] && echo -n "!$changes"
@@ -21,23 +28,27 @@ function git_branch {
 }
 
 function virtualenv {
-    local e=`basename $VIRTUAL_ENV 2>/dev/null`
-    [ ! -z "$e" ] && echo -n "env:$e "
+    # local e=`basename $VIRTUAL_ENV 2>/dev/null`
+    # [ ! -z "$e" ] && echo -n "penv:$e "
+
+    [ -n "$VIRTUAL_ENV" ] && echo -n "venv "
 }
 
 # Node.js env
 function nenv {
-    local e=`basename $NODE_ENV_NAME 2>/dev/null`
-    [ ! -z "$e" ] && echo -n "nenv:$e "
+    # local e=`basename $NODE_ENV 2>/dev/null`
+    # [ ! -z "$e" ] && echo -n "nenv:$e "
+
+    [ -n "$NODE_ENV" ] && echo -n "node "
 }
 
 function directory {
-    current="`pwd`"
+    current="`pwd -P`"
     echo -n "${current/$HOME/~}"
 }
 
-function user_color {
-    if [ "`whoami`" == "root" ]; then echo -n $RED; else echo -n $CYAN; fi
+function border_color {
+    if [ "`whoami`" == "root" ]; then echo -n $RED; else echo -n $BORDER_COLOR; fi
 }
 
 function extender_line {
@@ -46,7 +57,7 @@ function extender_line {
 
 function get_extender_length() {
     prompts="$@"
-    colour_used="$(user_color)${OFF}${BLUE}${OFF}${YELLOW}${OFF}${GRAY}${OFF}"
+    colour_used="$(border_color)${USERNAME_COLOR}${ENV_COLOR}${PATH_COLOR}${GIT_COLOR}${TIME_COLOR}"
     prompt_length="$((${#prompts}))"
     printable_length="$((${prompt_length} - ${#colour_used}))"
     echo -n "$((${COLUMNS} - ${printable_length} - 1))" # I don't know where the 1 comes from -_-
@@ -56,8 +67,8 @@ function prompt() {
     history -a; history -c; history -r;
 
     dir=$(directory)
-    prompt_right="${GRAY}`date +"%I:%M:%S"`${OFF}"
-    prompt_left="$(user_color)╔══${OFF} `whoami` ${BLUE}$(nenv)$(virtualenv)${OFF}$dir${YELLOW}$(git_branch)$(git_changes)${OFF} "
+    prompt_right="${TIME_COLOR}`date +"%I:%M:%S"`"
+    prompt_left="$(border_color)╔══ ${USERNAME_COLOR}`whoami` ${ENV_COLOR}$(nenv)$(virtualenv)${PATH_COLOR}$dir${GIT_COLOR}$(git_branch)$(git_changes) "
 
     extender_length=`get_extender_length $prompt_left $prompt_right`
     if [ "$extender_length" -lt -9 ]; then
@@ -77,9 +88,9 @@ function prompt() {
         extender_length="0"
         prompt_right=""
     fi
-    prompt_extender="$(user_color)`printf -vch "%${extender_length}s" ""; printf "%s" "${ch// /═}"`╡${OFF}"
+    prompt_extender="$(border_color)`printf -vch "%${extender_length}s" ""; printf "%s" "${ch// /═}"`╡${OFF}"
 
-    prompt_line2="$(user_color)╚╡${OFF}"
+    prompt_line2="$(border_color)╚╡${OFF}"
 
     PS1=$(printf "%s%s%s\n%s" \
         "$prompt_left" \

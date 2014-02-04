@@ -27,6 +27,8 @@ function gca; git commit -av $argv; end
 function serve; python -m http.server; end
 function subl; subl3 $argv; end
 function su; command su --shell=/usr/bin/fish $argv; end
+function gps; ps aux | grep $argv | grep -v grep; end
+function gpsp; ps aux | grep $argv | grep -v grep | awk '{print $2}'; end
 
 . (ssh-agent) >&- ^&-; ssh-add >&- ^&-
 
