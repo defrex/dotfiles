@@ -15,8 +15,10 @@ function cd (){
 
     if [[ $cur_files = *.venv* ]]; then
         source "$WORKON_HOME/$(cat .venv)/bin/activate"
+        [ -f "$VIRTUAL_ENV/bin/postactivate" ] && source "$VIRTUAL_ENV/bin/postactivate"
     elif [ -n "$VIRTUAL_ENV" ]; then
         deactivate
+        [ -f "$VIRTUAL_ENV/bin/postdeactivate" ] && source "$VIRTUAL_ENV/bin/postdeactivate"
     fi
 
     if [ -n "$NODE_ENV" ]; then
@@ -39,6 +41,7 @@ function cd (){
     fi
 }
 
+function mk(){ mkdir -p `dirname $1` && touch $1; }
 
 function jump(){ eval "$(~/code/jump/bin/jump.dart $@)"; }
 alias jp='jump'
@@ -79,9 +82,10 @@ fi
 eval `ssh-agent` > /dev/null 2>&1
 ssh-add > /dev/null 2>&1
 
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/google-chrome-stable
 export CHROME_BIN=$BROWSER
 export TERMINAL=terminator
+export PYTHONSTARTUP="$HOME/.python_startup.py"
 
 LOCAL=$HOME/bin
 RUBY_19=$HOME/.gem/ruby/1.9.1/bin
