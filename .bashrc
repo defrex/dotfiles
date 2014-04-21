@@ -79,8 +79,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-# eval `ssh-agent` > /dev/null 2>&1
-# ssh-add > /dev/null 2>&1
+# TODO: only execute if not over SSH
+eval `ssh-agent` > /dev/null 2>&1 && ssh-add > /dev/null 2>&1
 
 export BROWSER=/usr/bin/google-chrome-stable
 export CHROME_BIN=$BROWSER

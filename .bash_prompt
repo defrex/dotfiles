@@ -46,7 +46,7 @@ function nenv {
 
 function directory {
     current="`pwd -P`"
-    echo -n "${current/$HOME/~}"
+    echo -n "${current/$HOME/'~'}"
 }
 
 function border_color {
