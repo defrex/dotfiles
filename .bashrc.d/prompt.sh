@@ -16,8 +16,7 @@ ENV_COLOR="$CYAN"
 GIT_COLOR="$YELLOW"
 TIME_COLOR="$GRAY"
 
-export PROMPT_COLOR="$BLUE"
-. ~/.bash_prompt_color 2>/dev/null
+# [ -z "$PROMPT_COLOR" ] && export PROMPT_COLOR="$BLUE"
 
 function git_changes {
     changes="`git status --porcelain 2> /dev/null | wc -l`"
