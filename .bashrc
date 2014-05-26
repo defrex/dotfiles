@@ -29,9 +29,8 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if [ -f ~/.dir_colors ]; then
+    eval `dircolors ~/.dir_colors`
 
     alias ls='ls --color=auto --human-readable'
     alias grep='grep --color=auto'

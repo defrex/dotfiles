@@ -57,6 +57,7 @@ TERM xterm-256color
 TERM xterm-88color
 TERM xterm-color
 TERM xterm-debian
+TERM terminator
 
 ## Documentation
 #
@@ -254,5 +255,3 @@ EXEC 01;38;5;64
 .anx 01;38;5;166
 .ogv 01;38;5;166
 .ogx 01;38;5;166
-
-
