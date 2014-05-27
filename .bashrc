@@ -40,6 +40,7 @@ export BROWSER=/usr/bin/google-chrome-stable
 export CHROME_BIN=$BROWSER
 export TERMINAL=terminator
 export PYTHONSTARTUP="$HOME/.python_startup.py"
+export EDITOR='vim'
 
 LOCAL=$HOME/bin
 export PATH=$LOCAL:"${PATH}"
