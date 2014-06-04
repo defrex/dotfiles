@@ -13,10 +13,11 @@ function cd (){
 
     cur_files="$(ls -la | awk '{print $9}')"
 
-    if [[ $cur_files = *.env* ]]; then
-        source ".env/bin/activate"
-    elif [ -n "$VIRTUAL_ENV" ]; then
+    if [ -n "$VIRTUAL_ENV" ]; then
         deactivate
+    fi
+    if [[ $cur_files = *.env* ]]; then
+        source .env/bin/activate
     fi
 
     if [ -n "$NODE_ENV" ]; then

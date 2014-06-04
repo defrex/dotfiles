@@ -1,6 +1,6 @@
 --nobreak
 --smart-case
---ignore-dir=migrations
+--ignore-dir=.env
 --ignore-dir=.git
 --ignore-dir=CACHE
 --ignore-dir=.sass-cache
