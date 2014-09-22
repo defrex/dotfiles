@@ -151,3 +151,8 @@ bar {
         status_command i3status
         position top
 }
+
+exec --no-startup-id nm-applet
+exec indicator-sound-switcher
+exec gnome-sound-applet
+

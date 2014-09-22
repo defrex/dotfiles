@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export EDITOR='vim'
+
+source '.bashrc.d/alias.sh'
+source '.bashrc.d/dir_colors.sh'
+source '.bashrc.d/history.sh'
+source '.bashrc.d/prompt.sh'
+source '.bashrc.d/prompt-yellow.sh'
