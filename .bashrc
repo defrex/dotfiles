@@ -13,8 +13,9 @@ export CHROME_BIN=$BROWSER
 export TERMINAL=gnome-terminal
 export PYTHONSTARTUP="$HOME/.python_startup.py"
 export EDITOR='vim'
-
 export PATH=$HOME/bin:"${PATH}"
+
+alias ssh='sshrc'
 
 for rc in ~/.bashrc.d/* ; do
     source "$rc"
