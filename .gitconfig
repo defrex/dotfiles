@@ -10,6 +10,6 @@
 	default = upstream
 [core]
 	autocrlf = input
-	safecrlf = true
+	safecrlf = false
 [credential]
 	helper = cache
