@@ -11,8 +11,9 @@
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
 	"dartsdk_path": "/opt/dart-sdk/",
-	"detect_indentation": false,
-	"detect_slow_plugins": false,
+	"detect_indentation": true,
+	"detect_slow_plugins": true,
+	"dpi_scale": 2.0,
 	"enable_tab_scrolling": true,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -61,10 +62,6 @@
 	[
 		"Vintage"
 	],
-	"ignored_words":
-	[
-		"Shopcastr"
-	],
 	"margin": 0,
 	"rulers":
 	[
@@ -76,5 +73,6 @@
 	"spell_check": true,
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"update_check": false
+	"update_check": false,
+	"vintage_start_in_command_mode": true
 }

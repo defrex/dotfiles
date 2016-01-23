@@ -86,6 +86,11 @@ function nenv {
     [ -n "$NODE_ENV" ] && echo -n "node "
 }
 
+# rails env
+function test_rails {
+    [ -n "$RAILS_ENV" ] && echo -n "rails "
+}
+
 function directory {
     current="`pwd -P`"
     echo -n "${current/$HOME/'~'}"
@@ -112,7 +117,7 @@ function prompt() {
 
     dir=$(directory)
     prompt_right="${TIME_COLOR}`date +"%I:%M:%S"`"
-    prompt_left="$(border_color)╔══ ${USERNAME_COLOR}`whoami`@$(border_color)`hostname` ${ENV_COLOR}$(nenv)$(virtualenv)${PATH_COLOR}$dir$(git_color)$(git_branch)$(git_changes) "
+    prompt_left="$(border_color)╔══ ${USERNAME_COLOR}`whoami`@$(border_color)`hostname` ${ENV_COLOR}$(nenv)$(virtualenv)$(test_rails)${PATH_COLOR}$dir$(git_color)$(git_branch)$(git_changes) "
 
     extender_length=`get_extender_length $prompt_left $prompt_right`
     if [ "$extender_length" -lt -9 ]; then

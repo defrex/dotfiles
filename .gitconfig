@@ -11,5 +11,6 @@
 [core]
 	autocrlf = input
 	safecrlf = false
+	excludesfile = /home/defrex/.gitignore_global
 [credential]
 	helper = cache

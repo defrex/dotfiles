@@ -8,12 +8,12 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-export BROWSER=/usr/bin/google-chrome
+export BROWSER=/usr/bin/google-chrome-stable
 export CHROME_BIN=$BROWSER
 export TERMINAL=gnome-terminal
 export PYTHONSTARTUP="$HOME/.python_startup.py"
 export EDITOR='vim'
-export PATH=$HOME/bin:"${PATH}"
+export PATH=$HOME/bin:/usr/local/heroku/bin:"${PATH}"
 
 alias ssh-raw='ssh'
 # alias ssh='sshrc'
@@ -21,3 +21,6 @@ alias ssh-raw='ssh'
 for rc in ~/.bashrc.d/* ; do
     source "$rc"
 done
+
+export NVM_DIR="/home/defrex/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

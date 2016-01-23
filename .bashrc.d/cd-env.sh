@@ -2,6 +2,17 @@
 
 export NODE_ENV
 
+function remove_path (){
+    IFS=:
+    # convert PATH to an array
+    path_array=($PATH)
+    # remove old bin path
+    path_array=( "${path_array[@]/$1}" )
+    # output the new array
+    PATH="${path_array[*]}"
+    unset IFS
+}
+
 function cd (){
 
     cur_files="$(ls -la | awk '{print $9}')"
@@ -21,22 +32,13 @@ function cd (){
     fi
 
     if [ -n "$NODE_ENV" ]; then
-        IFS=:
-        # convert PATH to an array
-        path_array=($PATH)
-        # remove old NODE_ENV
-        old_bin="$NODE_ENV/node_modules/.bin"
-        path_array=(${path_array[@]%%$old_bin})
-        # output the new array
-        PATH="${path_array[*]}"
-        unset IFS
-
+        remove_path "$NODE_ENV/node_modules/.bin"
         export NODE_ENV=''
     fi
 
     if [[ $cur_files = *node_modules* ]]; then
         export NODE_ENV=`pwd`
-        export PATH="$PATH:$NODE_ENV/node_modules/.bin"
+        export PATH="$NODE_ENV/node_modules/.bin:$PATH"
     fi
 
     if [[ $cur_files = *.enter* ]]; then
