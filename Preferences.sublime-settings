@@ -9,11 +9,10 @@
 		}
 	],
 	"auto_match_enabled": false,
-	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
-	"dartsdk_path": "/opt/dart-sdk/",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"detect_indentation": true,
 	"detect_slow_plugins": true,
-	"dpi_scale": 2.0,
+	"dpi_scale": 1.75,
 	"enable_tab_scrolling": true,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -55,7 +54,6 @@
 		".env"
 	],
 	"font_face": "Source Code Pro",
-	"font_size": 8,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
