@@ -1,1 +1,0 @@
-../.bashrc.d/prompt-green.sh
