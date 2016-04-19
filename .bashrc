@@ -13,7 +13,17 @@ export CHROME_BIN=$BROWSER
 export TERMINAL=gnome-terminal
 export PYTHONSTARTUP="$HOME/.python_startup.py"
 export EDITOR='vim'
-export PATH=$HOME/bin:/usr/local/heroku/bin:"${PATH}"
+
+# The following will figure out what directory this file is in, resolving syms
+CUR_SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$CUR_SOURCE" ]; do
+  CUR_DIR="$( cd -P "$( dirname "$CUR_SOURCE" )" && pwd )"
+  CUR_SOURCE="$(readlink "$CUR_SOURCE")"
+  [[ $CUR_SOURCE != /* ]] && CUR_SOURCE="$CUR_DIR/$CUR_SOURCE"
+done
+CUR_DIR="$( cd -P "$( dirname "$CUR_SOURCE" )" && pwd )"
+
+export PATH=$HOME/bin:$CUR_DIR/bin:"${PATH}"
 
 alias ssh-raw='ssh'
 # alias ssh='sshrc'

@@ -1,4 +1,7 @@
 
+! TODO: fix back/forward on mouse (back: 6, forward: 7)
+!pointer = 1 2 3 4 5 7 6 8 9 10 11 12
+
 ! was `Insert NoSymbol Insert`
 keycode 118 = NoSymbol
 
