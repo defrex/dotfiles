@@ -1,1 +1,0 @@
-../.bashrc.d/dir_colors.sh

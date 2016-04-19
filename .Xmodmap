@@ -1,5 +1,12 @@
 
+! was `Insert NoSymbol Insert`
+keycode 118 = NoSymbol
+
+! was `Prior NoSymbol Prior`
 keycode 112 = Home NoSymbol Home
+
+! was `Next NoSymbol Next`
 keycode 117 = End NoSymbol End
-keycode 118 = grave asciitilde grave asciitilde
-keycode 66 = NoSymbol
+
+!was `Caps_Lock NoSymbol Caps_Lock`
+keycode  66 = NoSymbol

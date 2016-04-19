@@ -1,1 +1,0 @@
-../.bashrc.d/alias.sh

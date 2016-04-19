@@ -1,7 +1,0 @@
-#!/bin/sh
-
-export EDITOR='vim'
-
-for rc in $SSHHOME/.sshrc.d/* ; do
-    source "$rc"
-done
