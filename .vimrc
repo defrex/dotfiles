@@ -43,7 +43,7 @@ set wildignore+=coffee/*.js,coffee/*.map,node_modules,coffee/*.map
 set wildignore+=tiny_mce,media,.sass-cache
 
 set colorcolumn=81
-highlight ColorColumn ctermbg=000 guibg=#fff
+highlight ColorColumn ctermbg=000 guibg=white
 
 "hilight current line
 set cursorline
