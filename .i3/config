@@ -37,6 +37,7 @@ bindsym $mod+p exec dmenu_run  -fn 'DejaVu Sans Mono-10'
 
 # detect displays
 bindsym $mod+d exec autorandr --change --default mobile
+#bindsym $mod+d exec "autorandr --change --default mobile && xmodmap ~/.Xmodmap"
 
 bindsym $mod+Escape exec i3lock -c 000000 && sleep 1 && xset dpms force off
 

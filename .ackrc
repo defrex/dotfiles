@@ -1,5 +1,6 @@
 --nobreak
 --smart-case
+--ignore-dir=local
 --ignore-dir=.env
 --ignore-dir=.git
 --ignore-dir=CACHE

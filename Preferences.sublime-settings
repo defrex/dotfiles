@@ -10,7 +10,7 @@
 	],
 	"auto_match_enabled": false,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Solarized (Dark) (SL).tmTheme",
 	"detect_indentation": true,
 	"detect_slow_plugins": true,
 	"enable_tab_scrolling": true,
@@ -53,12 +53,12 @@
 		".git",
 		".env"
 	],
-	"font_face": "Source Code Pro",
+	"font_face": "DejaVu Sans Mono",
 	"font_options":
 	[
 		"gray_antialias"
 	],
-	"font_size": 8,
+	"font_size": 9,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
