@@ -8,7 +8,11 @@ openssl req \
     -days 365 \
     -nodes \
     -x509 \
-    -subj "/C=CA/ST=Ontario/L=Toronto/O=Bespoke Digital/CN=$domain" \
+    -subj "/C=CA/ST=Ontario/L=Toronto/O=CareGuide/CN=$domain" \
+    -reqexts SAN \
+    -extensions SAN \
+    -config <(cat /etc/ssl/openssl.cnf \
+        <(printf "\n[SAN]\nsubjectAltName=DNS:$domain")) \
     -keyout "$domain.key" \
     -out "$domain.cert"
 
