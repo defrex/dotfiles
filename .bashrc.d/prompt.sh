@@ -59,17 +59,17 @@ GIT_CHANGE_COLOR="$YELLOW"
 TIME_COLOR="$GRAY"
 PROMPT_COLOR="$BLUE"
 
-function git_changes {
+function prompt_git_changes {
     changes="`git status --porcelain 2> /dev/null | wc -l`"
     [ $changes -ne 0 ] && echo -n "!$changes"
 }
 
-function git_branch {
+function prompt_git_branch {
     branch="`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
     [ "${#branch}" -ne 0 ] && echo -n ":$branch"
 }
 
-function git_color {
+function prompt_git_color {
     changes="`git status --porcelain 2> /dev/null | wc -l`"
     if [ $changes -ne 0 ];
         then echo -n $GIT_CHANGE_COLOR;
@@ -77,36 +77,36 @@ function git_color {
     fi
 }
 
-function virtualenv {
+function prompt_virtualenv {
     [ -n "$VIRTUAL_ENV" ] && echo -n "venv "
 }
 
 # Node.js env
-function nenv {
+function prompt_nenv {
     [ -n "$NODE_ENV" ] && echo -n "node "
 }
 
 # rails env
-function test_rails {
+function prompt_test_rails {
     [ -n "$RAILS_ENV" ] && echo -n "rails "
 }
 
-function directory {
+function prompt_directory {
     current="`pwd -P`"
     echo -n "${current/$HOME/'~'}"
 }
 
-function border_color {
+function prompt_border_color {
     if [ "`whoami`" == "root" ]; then echo -n $RED; else echo -n $PROMPT_COLOR; fi
 }
 
-function extender_line {
+function promopt_extender_line {
     line="`printf -vch "%$($1)s" ""; printf "%s" "${ch// /═}"`"
 }
 
 function get_extender_length() {
     prompts="$@"
-    colour_used="$(border_color)${USERNAME_COLOR}$(border_color)${ENV_COLOR}${PATH_COLOR}$(git_color)${TIME_COLOR}"
+    colour_used="$(prompt_border_color)${USERNAME_COLOR}$(prompt_border_color)${ENV_COLOR}${PATH_COLOR}$(prompt_git_color)${TIME_COLOR}"
     prompt_length="$((${#prompts}))"
     printable_length="$((${prompt_length} - ${#colour_used}))"
     echo -n "$((${COLUMNS} - ${printable_length} - 1))" # I don't know where the 1 comes from -_-
@@ -115,9 +115,9 @@ function prompt() {
     # History Mutherfucker!
     history -a; history -c; history -r;
 
-    dir=$(directory)
+    dir=$(prompt_directory)
     prompt_right="${TIME_COLOR}`date +"%I:%M:%S"`"
-    prompt_left="$(border_color)╔══ ${USERNAME_COLOR}`whoami`@$(border_color)`hostname` ${ENV_COLOR}$(nenv)$(virtualenv)$(test_rails)${PATH_COLOR}$dir$(git_color)$(git_branch)$(git_changes) "
+    prompt_left="$(prompt_border_color)╔══ ${USERNAME_COLOR}`whoami`@$(prompt_border_color)`hostname` ${ENV_COLOR}$(prompt_nenv)$(prompt_virtualenv)$(prompt_test_rails)${PATH_COLOR}$dir$(prompt_git_color)$(prompt_git_branch)$(prompt_git_changes) "
 
     extender_length=`get_extender_length $prompt_left $prompt_right`
     if [ "$extender_length" -lt -9 ]; then
@@ -137,9 +137,9 @@ function prompt() {
         extender_length="0"
         prompt_right=""
     fi
-    prompt_extender="$(border_color)`printf -vch "%${extender_length}s" ""; printf "%s" "${ch// /═}"`╡${OFF}"
+    prompt_extender="$(prompt_border_color)`printf -vch "%${extender_length}s" ""; printf "%s" "${ch// /═}"`╡${OFF}"
 
-    prompt_line2="$(border_color)╚╡${OFF}"
+    prompt_line2="$(prompt_border_color)╚╡${OFF}"
 
     PS1=$(printf "%s%s%s\n%s" \
         "$prompt_left" \

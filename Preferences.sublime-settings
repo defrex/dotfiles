@@ -83,6 +83,7 @@
 	"show_tab_close_buttons": false,
 	"smart_indent": false,
 	"spell_check": true,
+	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"update_check": false,

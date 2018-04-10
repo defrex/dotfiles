@@ -1,6 +1,5 @@
 
-
-export NODE_ENV
+export NODE_DIR
 
 function remove_path (){
     IFS=:
@@ -14,7 +13,6 @@ function remove_path (){
 }
 
 function cd (){
-
     cur_files="$(ls -la | awk '{print $9}')"
     if [[ $cur_files = *.exit* ]]; then
         source .exit
@@ -27,18 +25,18 @@ function cd (){
     if [ -n "$VIRTUAL_ENV" ]; then
         deactivate
     fi
-    if [[ $cur_files = *.env* ]]; then
-        source .env/bin/activate
+    if [[ $cur_files = *.venv* ]]; then
+        source .venv/bin/activate
     fi
 
-    if [ -n "$NODE_ENV" ]; then
-        remove_path "$NODE_ENV/node_modules/.bin"
-        export NODE_ENV=''
+    if [ -n "$NODE_DIR" ]; then
+        remove_path "$NODE_DIR/node_modules/.bin"
+        export NODE_DIR=''
     fi
 
     if [[ $cur_files = *node_modules* ]]; then
-        export NODE_ENV=`pwd`
-        export PATH="$NODE_ENV/node_modules/.bin:$PATH"
+        export NODE_DIR=`pwd`
+        export PATH="$NODE_DIR/node_modules/.bin:$PATH"
     fi
 
     if [[ $cur_files = *.enter* ]]; then
