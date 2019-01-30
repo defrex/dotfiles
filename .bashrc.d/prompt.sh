@@ -60,7 +60,7 @@ TIME_COLOR="$GRAY"
 PROMPT_COLOR="$BLUE"
 
 function git_changes {
-    changes="`git status --porcelain 2> /dev/null | wc -l`"
+    changes="`git status --porcelain 2> /dev/null | wc -l | sed 's/^[ \t]*//;s/[ \t]*$//'`"
     [ $changes -ne 0 ] && echo -n "!$changes"
 }
 
@@ -113,7 +113,7 @@ function get_extender_length() {
 }
 function prompt() {
     # History Mutherfucker!
-    history -a; history -c; history -r;
+    # history -a; history -c; history -r;
 
     dir=$(directory)
     prompt_right="${TIME_COLOR}`date +"%I:%M:%S"`"

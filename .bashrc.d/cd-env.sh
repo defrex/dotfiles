@@ -1,20 +1,10 @@
-
-
 export NODE_ENV
 
 function remove_path (){
-    IFS=:
-    # convert PATH to an array
-    path_array=($PATH)
-    # remove old bin path
-    path_array=( "${path_array[@]/$1}" )
-    # output the new array
-    PATH="${path_array[*]}"
-    unset IFS
+    export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`;
 }
 
 function cd (){
-
     cur_files="$(ls -la | awk '{print $9}')"
     if [[ $cur_files = *.exit* ]]; then
         source .exit
@@ -24,16 +14,16 @@ function cd (){
 
     cur_files="$(ls -la | awk '{print $9}')"
 
-    if [ -n "$VIRTUAL_ENV" ]; then
-        deactivate
-    fi
-    if [[ $cur_files = *.env* ]]; then
-        source .env/bin/activate
-    fi
+    # if [ -n "$VIRTUAL_ENV" ]; then
+    #     deactivate
+    # fi
+    # if [[ $cur_files = *venv* ]]; then
+    #     source venv/bin/activate
+    # fi
 
     if [ -n "$NODE_ENV" ]; then
         remove_path "$NODE_ENV/node_modules/.bin"
-        export NODE_ENV=''
+        unset NODE_ENV
     fi
 
     if [[ $cur_files = *node_modules* ]]; then
