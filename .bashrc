@@ -10,8 +10,6 @@ fi
 
 export BROWSER=/usr/bin/google-chrome-stable
 export CHROME_BIN=$BROWSER
-export TERMINAL=gnome-terminal
-export PYTHONSTARTUP="$HOME/.python_startup.py"
 export EDITOR='vim'
 
 # The following will figure out what directory this file is in, resolving syms
@@ -25,13 +23,6 @@ CUR_DIR="$( cd -P "$( dirname "$CUR_SOURCE" )" && pwd )"
 
 export PATH=$HOME/bin:$CUR_DIR/bin:"${PATH}"
 
-alias ssh-raw='ssh'
-# alias ssh='sshrc'
-
 for rc in ~/.bashrc.d/* ; do
     source "$rc"
 done
-
-export NVM_DIR="/home/defrex/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-

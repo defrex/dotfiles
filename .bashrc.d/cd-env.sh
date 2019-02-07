@@ -18,20 +18,21 @@ function cd (){
         source .exit
     fi
 
-    builtin cd $@
-
-    cur_files="$(ls -la | awk '{print $9}')"
-
     if [ -n "$VIRTUAL_ENV" ]; then
         deactivate
-    fi
-    if [[ $cur_files = *.venv* ]]; then
-        source .venv/bin/activate
     fi
 
     if [ -n "$NODE_DIR" ]; then
         remove_path "$NODE_DIR/node_modules/.bin"
         export NODE_DIR=''
+    fi
+
+    builtin cd $@
+
+    cur_files="$(ls -la | awk '{print $9}')"
+
+    if [[ $cur_files = *.venv* ]]; then
+        source .venv/bin/activate
     fi
 
     if [[ $cur_files = *node_modules* ]]; then

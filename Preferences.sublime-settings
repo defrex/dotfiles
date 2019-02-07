@@ -10,7 +10,7 @@
 	],
 	"auto_match_enabled": false,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Solarized (Dark) (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
 	"detect_indentation": true,
 	"detect_slow_plugins": true,
 	"enable_tab_scrolling": true,

@@ -3,3 +3,4 @@
 /.enter
 /.exit
 /.venv
+/docker-compose.yml
