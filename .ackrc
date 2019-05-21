@@ -9,6 +9,7 @@
 --ignore-dir=.tmp
 --ignore-dir=bower
 --ignore-dir=.meteor
+--ignore-dir=.rpt2_cache
 --type-set=ipython=.ipynb
 --type-set=json=.json
 --type-set=coffee=.coffee
@@ -17,6 +18,7 @@
 --type-set=sass=.sass,.scss
 --type-set=css=.css,.sass,.scss
 --type-set=haml=.haml
+--type-set=typescript=.ts,.tsx
 --type=noipython
 --type=nojson
 --group

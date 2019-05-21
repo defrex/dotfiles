@@ -43,4 +43,8 @@ function cd (){
     if [[ $cur_files = *.enter* ]]; then
         source .enter
     fi
+
+    if [[ $cur_files = *.nvmrc* ]]; then
+        nvm use
+    fi
 }
