@@ -92,7 +92,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+p exec "rofi -show drun -modi drun -theme /usr/share/rofi/themes/Arc-Dark.rasi"
 #bindsym $mod+p exec i3-dmenu-desktop
 #bindsym $mod+p exec dmenu_run  -fn 'DejaVu Sans Mono-10'
 #bindsym $mod+p exec gnome-do
@@ -132,4 +132,4 @@ bar {
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+# exec_always --no-startup-id xmodmap ~/.Xmodmap
