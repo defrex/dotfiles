@@ -18,6 +18,7 @@
 --type-set=sass=.sass,.scss
 --type-set=css=.css,.sass,.scss
 --type-set=haml=.haml
+--type-set=test:match:\.test\.
 --type-set=typescript=.ts,.tsx
 --type-set=graphql=.graphql,.gql
 --type=noipython

@@ -35,20 +35,21 @@ TIME_COLOR="$GRAY"
 PROMPT_COLOR="$BLUE"
 
 function prompt_git_changes {
-    changes="`git status --porcelain 2> /dev/null | wc -l`"
+    changes="$(git status --porcelain 2>/dev/null | wc -l)"
     [ $changes -ne 0 ] && echo -n "!$(echo -e "$changes" | tr -d '[:space:]')"
 }
 
 function prompt_git_branch {
-    branch="`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
+    branch="$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
     [ "${#branch}" -ne 0 ] && echo -n ":$branch"
 }
 
 function prompt_git_color {
-    changes="`git status --porcelain 2> /dev/null | wc -l`"
-    if [ $changes -ne 0 ];
-        then echo -n $GIT_CHANGE_COLOR;
-        else echo -n $GIT_COLOR;
+    changes="$(git status --porcelain 2>/dev/null | wc -l)"
+    if [ $changes -ne 0 ]; then
+        echo -n $GIT_CHANGE_COLOR
+    else
+        echo -n $GIT_COLOR
     fi
 }
 
@@ -61,16 +62,17 @@ function prompt_nenv {
 }
 
 function prompt_directory {
-    current="`pwd -P`"
+    current="$(pwd -P)"
     echo -n "${current/$HOME/~}"
 }
 
 function prompt_border_color {
-    if [ "`whoami`" = "root" ]; then echo -n $RED; else echo -n $PROMPT_COLOR; fi
+    if [ "$(whoami)" = "root" ]; then echo -n $RED; else echo -n $PROMPT_COLOR; fi
 }
 
 function get_prompt() {
-    echo -n '$(prompt_border_color)╔══ ${USERNAME_COLOR}`whoami`@$(prompt_border_color)`hostname` ${ENV_COLOR}$(prompt_nenv)$(prompt_virtualenv)${PATH_COLOR}$(prompt_directory)$(prompt_git_color)$(prompt_git_branch)$(prompt_git_changes)\n$(prompt_border_color)╚╡${OFF}'
+    # hostname removed: @$(prompt_border_color)`hostname`
+    echo -n '$(prompt_border_color)╔══ ${USERNAME_COLOR}`whoami` ${ENV_COLOR}$(prompt_nenv)$(prompt_virtualenv)${PATH_COLOR}$(prompt_directory)$(prompt_git_color)$(prompt_git_branch)$(prompt_git_changes)\n$(prompt_border_color)╚╡${OFF}'
 }
 
 PROMPT=$(get_prompt)
