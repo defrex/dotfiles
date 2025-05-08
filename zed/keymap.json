@@ -1,0 +1,25 @@
+[
+  {
+    "bindings": {
+      "fn-`": ["workspace::SendKeystrokes", "`"],
+      "fn-~": ["workspace::SendKeystrokes", "~"],
+      // some boards send fn-esc instead of fn-`
+      "fn-esc": ["workspace::SendKeystrokes", "`"],
+      "fn-shift-esc": ["workspace::SendKeystrokes", "~"]
+    }
+  },
+
+  {
+    // your original entries follow…
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  }
+]

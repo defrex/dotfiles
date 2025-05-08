@@ -1,0 +1,35 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "always_allow_tool_actions": true,
+    "model_parameters": [],
+    "default_profile": "write",
+    "version": "2"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "format_on_save": {
+    "typescript": true,
+    "typescriptreact": true
+  },
+  "language_overrides": {
+    "TypeScript": {
+      "organize_imports_on_save": true
+    },
+    "TSX": {
+      "organize_imports_on_save": true
+    }
+  }
+}
