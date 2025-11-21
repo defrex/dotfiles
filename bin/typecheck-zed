@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Run TypeScript compiler with noEmit flag and capture output
+tsc_output=$(bunx tsc --noEmit 2>&1)
+exit_code=$?
+
+if [ $exit_code -eq 0 ]; then
+    echo "No TypeScript errors found!"
+    exit 0
+fi
+
+# Extract file paths from tsc output
+# Format: "path/to/file.ts(line,col): error message"
+files=$(echo "$tsc_output" | grep -E "\.tsx?\([0-9]+,[0-9]+\):" | sed 's/(.*//' | sort | uniq)
+
+if [ -z "$files" ]; then
+    echo "TypeScript errors found but couldn't extract file paths:"
+    echo "$tsc_output"
+    exit 1
+fi
+
+echo "Opening files with TypeScript errors in Zed:"
+echo "$files"
+
+# Open all files with errors in Zed
+echo "$files" | xargs zed
+
+exit $exit_code

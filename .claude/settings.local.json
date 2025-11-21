@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(ln:*)",
+      "Bash(echo $XDG_CONFIG_HOME)",
+      "Bash(cp:*)",
+      "Bash(git help:*)",
+      "Bash(bun:*)"
+    ],
+    "deny": []
+  }
+}
