@@ -21,7 +21,8 @@ function gwt() {
 
     local project_dir=$(basename "$PWD")
     local parent_dir=$(dirname "$PWD")
-    local worktree_dir="${parent_dir}/${project_dir}-${1}"
+    local safe_name="${1//\//-}"
+    local worktree_dir="${parent_dir}/${project_dir}-${safe_name}"
 
     # Check if a worktree already exists for this branch
     local existing_worktree=$(git worktree list --porcelain | grep -A 2 "branch refs/heads/$1" | grep "^worktree " | cut -d' ' -f2)
@@ -115,8 +116,9 @@ function gwt-rm() {
     
     local project_dir=$(basename "$PWD")
     local parent_dir=$(dirname "$PWD")
-    local worktree_dir="${parent_dir}/${project_dir}-${1}"
-    
+    local safe_name="${1//\//-}"
+    local worktree_dir="${parent_dir}/${project_dir}-${safe_name}"
+
     if [ -d "$worktree_dir" ]; then
         echo "Removing worktree: $worktree_dir"
         git worktree remove "$worktree_dir" --force
