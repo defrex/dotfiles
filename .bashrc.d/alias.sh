@@ -61,6 +61,7 @@ function gwt() {
         echo "Copied .claude/settings.local.json to worktree"
     fi && \
     cd "$worktree_dir" && \
+    echo -ne "\033]0;${project_dir}-${safe_name}\007" && \
     if [ -f bun.lockb ] || [ -f bun.lock ]; then
         echo "Running bun install..."
         bun install
