@@ -27,8 +27,9 @@ This is a personal dotfiles repository that manages configuration files for vari
 - Files are sourced alphabetically, so use prefixes if order matters
 
 ### Managing RC File Symlinks
-The `.zshrc.d/` directory uses symlinks to files in `.bashrc.d/` to share configurations:
-- **Create symlink**: `ln -s ~/.bashrc.d/filename.sh ~/.zshrc.d/filename.sh`
+The `~/.zshrc.d/` directory uses symlinks to files in this repo's `.bashrc.d/` directory:
+- **Important**: `~/.bashrc.d/` does NOT exist. Scripts live in this repo at `/Users/defrex/code/dotfiles/.bashrc.d/` and are symlinked into `~/.zshrc.d/`
+- **Create symlink**: `ln -s /Users/defrex/code/dotfiles/.bashrc.d/filename.sh ~/.zshrc.d/filename.sh`
 - **Remove symlink**: `unlink ~/.zshrc.d/filename.sh` or `rm ~/.zshrc.d/filename.sh`
 - **Check existing symlinks**: `ls -la ~/.zshrc.d/`
 
