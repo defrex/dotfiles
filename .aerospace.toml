@@ -107,7 +107,8 @@ alt-comma = 'layout accordion horizontal vertical'
 alt-a = 'focus left'
 alt-s = 'focus down'
 alt-d = 'focus right'
-alt-f = 'focus up'
+alt-w = 'focus up'
+alt-f = 'layout floating tiling'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-a = 'move left'
@@ -218,5 +219,5 @@ shift-down = ['volume set 0', 'mode main']
 
 # Window rules for applications
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
+if.app-id = 'com.apple.finder'
 run = 'layout floating'

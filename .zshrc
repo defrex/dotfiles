@@ -11,3 +11,11 @@ export PATH="$PATH:/Users/defrex/.local/bin"
 
 # Added by Antigravity
 export PATH="/Users/defrex/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/defrex/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
