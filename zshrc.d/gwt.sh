@@ -40,26 +40,16 @@ function gwt() {
         echo "Creating new branch '$branch_name' from $default_branch"
         git worktree add -b "$branch_name" "$worktree_dir" "$default_branch"
     fi && \
-    if [ -f .env ]; then
-        cp .env "$worktree_dir/.env"
-        echo "Copied .env to worktree"
-    fi && \
-    if [ -f .claude/settings.local.json ] && ! git ls-files --error-unmatch .claude/settings.local.json >/dev/null 2>&1; then
-        mkdir -p "$worktree_dir/.claude"
-        cp .claude/settings.local.json "$worktree_dir/.claude/settings.local.json"
-        echo "Copied .claude/settings.local.json to worktree"
+    if [ -f worktree-init.sh ]; then
+        cp worktree-init.sh "$worktree_dir/worktree-init.sh"
+    else
+        echo "Warning: No worktree-init.sh found. Skipping project setup."
     fi && \
     cd "$worktree_dir" && \
     echo -ne "\033]0;${project_dir}-${safe_name}\007" && \
-    if [ -f bun.lockb ] || [ -f bun.lock ]; then
-        echo "Running bun install..."
-        bun install
-    elif [ -f package-lock.json ]; then
-        echo "Running npm install..."
-        npm install
-    elif [ -f yarn.lock ]; then
-        echo "Running yarn install..."
-        yarn install
+    if [ -f worktree-init.sh ]; then
+        echo "Running worktree-init.sh..."
+        ./worktree-init.sh
     fi
 }
 
