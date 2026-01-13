@@ -50,6 +50,7 @@ The `~/.zshrc.d/` directory uses symlinks to files in this repo's `zshrc.d/` dir
 - `zshrc.d/cd-env.sh`: Custom directory environment switching functionality
 - `zshrc.d/starship.sh`: Starship prompt configuration
 - `zed/settings.json`: Zed editor settings with TypeScript auto-formatting
+- `claude/statusline.sh`: Custom Claude Code statusline script showing context usage progress bar (symlinked to `~/.claude/statusline.sh`)
 
 ## Notes
 

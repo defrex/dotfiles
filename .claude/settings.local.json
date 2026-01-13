@@ -7,7 +7,14 @@
       "Bash(echo $XDG_CONFIG_HOME)",
       "Bash(cp:*)",
       "Bash(git help:*)",
-      "Bash(bun:*)"
+      "Bash(bun:*)",
+      "Bash(brew upgrade:*)",
+      "Bash(brew services stop:*)",
+      "Bash(pkill:*)",
+      "Bash(~/.claude/statusline.sh)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }
