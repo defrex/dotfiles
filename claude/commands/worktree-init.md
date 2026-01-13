@@ -7,6 +7,23 @@ Create a `worktree-init.sh` script in the project root for git worktree initiali
 1. The script must be executable (`chmod +x worktree-init.sh`)
 2. Add `worktree-init.sh` to `.gitignore` (this file contains local paths and shouldn't be committed)
 
+## Script Header
+
+Always include this header comment at the top of the script:
+
+```bash
+#!/bin/bash
+# worktree-init.sh - Git worktree initialization script
+#
+# This script runs automatically when creating a new git worktree with `gwt <branch>`.
+# It executes from inside the new worktree directory after the worktree is created.
+#
+# The main worktree is at: ../<project-name>/
+#
+# This file is gitignored because it contains machine-specific paths and preferences.
+# To modify worktree setup, edit this file directly.
+```
+
 ## Script Template
 
 The script runs from inside the new worktree directory. The main worktree is typically at `../<project-name>/`.
@@ -51,7 +68,9 @@ fi
 ## Instructions
 
 1. Determine the project name (the directory name of the main worktree)
-2. Create `worktree-init.sh` with the appropriate setup commands for this project
+2. Create `worktree-init.sh` with:
+   - The header comment block (replace `<project-name>` with actual project name)
+   - Appropriate setup commands for this project
 3. Make it executable
 4. Add to `.gitignore` if not already present
 5. Explain what the script does
