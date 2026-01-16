@@ -15,15 +15,18 @@ if [ "$usage" != "null" ]; then
   pct=$((current * 100 / size))
 
   # Create progress bar (20 characters) with color zones
-  # 0-10: gray (safe), 11-14: yellow (warning), 15-19: red (danger)
-  filled=$((pct / 5))  # 20 chars = 5% per char
-  bar=""
+  # Format: [====================] XX%
+  # Colors: 0-10: gray (safe), 11-14: yellow (warning), 15-19: red (danger)
+  bar_width=20
+  filled=$((pct * bar_width / 100))
+
   gray=$'\033[37m'
   yellow=$'\033[33m'
   red=$'\033[31m'
   reset=$'\033[0m'
 
-  for ((i=0; i<20; i++)); do
+  bar="${gray}["
+  for ((i=0; i<bar_width; i++)); do
     # Determine color for this position
     if [ $i -le 10 ]; then
       color="$gray"
@@ -35,14 +38,14 @@ if [ "$usage" != "null" ]; then
 
     # Determine fill character
     if [ $i -lt $filled ]; then
-      char="█"
+      char="="
     else
-      char="░"
+      char="-"
     fi
 
     bar+="${color}${char}"
   done
-  bar+="$reset"
+  bar+="${gray}] ${pct}%${reset}"
 
   ctx_part="${bar}"
 fi
