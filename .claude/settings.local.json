@@ -19,7 +19,9 @@
       "Bash(git -C /Users/defrex/code/dotfiles diff)",
       "Bash(git -C /Users/defrex/code/dotfiles log --oneline -5)",
       "Bash(git -C /Users/defrex/code/dotfiles add claude/statusline.sh)",
-      "Bash(git -C /Users/defrex/code/dotfiles commit -m \"$\\(cat <<''EOF''\nupdate statusline progress bar style to use = and - characters\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C /Users/defrex/code/dotfiles commit -m \"$\\(cat <<''EOF''\nupdate statusline progress bar style to use = and - characters\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(chmod:*)",
+      "Bash(/Users/defrex/code/gwt/gwt:*)"
     ],
     "deny": []
   }
