@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "Bash|Read|Write|Edit|Glob|Grep|WebFetch|WebSearch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun .claude/skills/permission-policy/permission-policy.ts",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
