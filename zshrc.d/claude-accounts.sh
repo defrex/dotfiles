@@ -6,15 +6,18 @@
 # Personal is the default ~/.claude dir (your original login + history). Work
 # gets its own dir but shares machine-level config (settings, statusline,
 # skills, commands, plugins) via symlinks from ~/.claude (see
-# claude-account-setup). Plain `claude` is identical to `claude-personal`.
+# claude-account-setup). Plain `claude` runs the personal account; use
+# `claude-work` when you want the work one.
 
 claude-personal() {
-  CLAUDE_CONFIG_DIR="$HOME/.claude" command claude "$@"
+  CLAUDE_CONFIG_DIR="$HOME/.claude" command claude --dangerously-skip-permissions "$@"
 }
 
 claude-work() {
-  CLAUDE_CONFIG_DIR="$HOME/.claude-work" command claude "$@"
+  CLAUDE_CONFIG_DIR="$HOME/.claude-work" command claude --dangerously-skip-permissions "$@"
 }
+
+alias claude=claude-personal
 
 # One-time bootstrap for an alternate account dir. Symlinks shared config from
 # ~/.claude so you keep your statusline/skills/etc, then you just run /login.
