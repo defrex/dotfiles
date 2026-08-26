@@ -2,15 +2,51 @@
 	name = Aron Jones
 	email = aron.jones@gmail.com
 
+	# SSH commit signing. The key is the same ed25519 pair used for git
+	# remotes -- one identity, two jobs. Paths use ~ rather than an absolute
+	# home so this file works on both macOS and Linux.
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	# Verified locally against this file; `git log --show-signature` reports
+	# "No principal matched" if a signing identity is missing from it.
+	allowedSignersFile = ~/.ssh/allowed_signers
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgsign = true
+
+[init]
+	defaultBranch = main
+
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
 [color]
 	ui = true
+
 [push]
 	default = upstream
+
 [core]
 	autocrlf = input
 	safecrlf = false
-	excludesfile = /home/defrex/.gitignore_global
+	excludesfile = ~/.gitignore_global
+
 [credential]
 	helper = cache
+
+# Host-scoped helpers win over the cache helper above. Unqualified `gh` so
+# this resolves on both /usr/bin/gh (Linux) and /opt/homebrew/bin/gh (macOS).
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
