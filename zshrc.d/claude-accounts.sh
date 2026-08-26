@@ -9,12 +9,20 @@
 # claude-account-setup). Plain `claude` runs the personal account; use
 # `claude-work` when you want the work one.
 
+# Both wrappers prefix the auto-generated session name with the current
+# directory, so the remote session list reads `sysadmin-clever-otter` rather
+# than `membox-clever-otter` for every chat on this box. See alias.sh.
+
 claude-personal() {
-  CLAUDE_CONFIG_DIR="$HOME/.claude" command claude --dangerously-skip-permissions "$@"
+  CLAUDE_CONFIG_DIR="$HOME/.claude" command claude \
+    --dangerously-skip-permissions \
+    --remote-control-session-name-prefix "${PWD##*/}" "$@"
 }
 
 claude-work() {
-  CLAUDE_CONFIG_DIR="$HOME/.claude-work" command claude --dangerously-skip-permissions "$@"
+  CLAUDE_CONFIG_DIR="$HOME/.claude-work" command claude \
+    --dangerously-skip-permissions \
+    --remote-control-session-name-prefix "${PWD##*/}" "$@"
 }
 
 alias claude=claude-personal
